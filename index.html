@@ -13,17 +13,30 @@
     <br>
     <main>
       <fieldset>
-        <legend>Fyll i uppgifter som skall göra</legend>
+        <legend>Fyll i uppgifter som skall göras</legend>
         <form>
           <label for="task">Uppgift:</label>
           <input type="text" id="task">
           <br>
+          <label for="priority">Prioritet:</label>
+          <input type="number" id="priority" min="1" max="3"><span>Välj mellan 1 till 3, där 1 är viktigast och 3 minst viktigt</span>
+          <br>
           <input type="button" id="add-btn" value="Lägg till uppgift">
+          <input type="button" id="check-btn" value="Sätt markerat som klart">
         </form>
       </fieldset>
       <div id="toDoDiv">
         <h2>Att göra:</h2>
-        <ul id="toDoList"></ul>
+        <table id="toDoTable">
+          <thead>
+            <tr>
+              <th>Uppgift</th>
+              <th>Prioritet</th>
+              <th>Markera klarade uppgifter</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
       </div>
     </main>
     <script type="module" src="/src/main.ts"></script>
