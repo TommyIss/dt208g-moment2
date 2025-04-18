@@ -160,7 +160,7 @@ function addNewTodo(newTodoList: TodoList): void {
     tableRow.appendChild(taskData);
     tableRow.appendChild(priorityData);
     tableRow.appendChild(statusData);
-    tableRow.appendChild(checkBox);
+    tableRow.appendChild(checkData);
     tableBody.appendChild(tableRow);
   });
 

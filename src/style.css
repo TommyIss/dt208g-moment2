@@ -1,96 +1,83 @@
-:root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+/* header-footer-färg: #60B5FF
+main-färg: #FFECDB
+hover-färg: #AFDDFF
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
-body {
+*/
+* {
   margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  padding: 0;
+}
+header, main, footer {
+  max-width: 1200px;
+  margin: auto;
+  width: 100%;
+  line-height: 1.3em;
+  font-size: 1.1em;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+header, footer {
+  background-color: #60B5FF;
+  text-align: center;
+  padding: 1%;
 }
 
-#app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+main {
+  background-color: #FFECDB;
+  padding: 1%;
+}
+
+input {
+  margin: 1% 0;
+}
+
+#add-btn, #check-btn, #remove-all-btn {
+  background-color: #FF9149;
+  margin: 1%;
+  padding: 0.3% 1%;
+}
+#add-btn:hover, #check-btn:hover, #remove-all-btn:hover {
+  background-color: #AFDDFF;
+  cursor: pointer;
+}
+
+
+/*Tabell*/
+#toDoTable {
+  width: 100%;
+}
+tr:nth-child(even) {
+  background-color: #AFDDFF;
+}
+th {
+  background-color: #AFDDFF;
+  border: 1px solid black;
+  padding: 0 10px;
+  text-align: center;
+}
+#task-header:hover, #priority-header:hover, #status-header:hover {
+  text-decoration: underline;
+  color: #FF9149;
+  cursor: pointer;
+}
+
+td {
+  border: 1px solid black;
+  padding: 0 10px;
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vanilla:hover {
-  filter: drop-shadow(0 0 2em #3178c6aa);
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
-}
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+/* Stilsättning för mindre skärm*/
+@media screen and (max-width: 800px) {
+  header, main, footer {
+    font-size: 0.9em;
   }
-  a:hover {
-    color: #747bff;
+  #toDoTable {
+    overflow-x: auto;
+    font-size: 0.7em;
+    border-collapse: collapse;
+    margin: 2% 0;
   }
-  button {
-    background-color: #f9f9f9;
+  th, td {
+    padding: 0 4px;
   }
 }

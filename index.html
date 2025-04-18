@@ -5,12 +5,12 @@
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Moment 2</title>
+    <link rel="stylesheet" href="./src/style.css">
   </head>
   <body>
     <header>
       <h1>Moment 2</h1>
     </header>
-    <br>
     <main>
       <fieldset>
         <legend>Fyll i uppgifter som skall göras</legend>
@@ -28,6 +28,7 @@
       </fieldset>
       <div id="toDoDiv">
         <h2>Att göra:</h2>
+        <p>Du kan radera en viss uppgift genom att klicka på dess benämning</p>
         <table id="toDoTable">
           <thead>
             <tr>
@@ -41,6 +42,10 @@
         </table>
       </div>
     </main>
+    <footer>
+      <p>Laborationsuppgift för kursen DT208G, Programmering i TypeScript</p>
+      <p>&copy;Copyright Tommy Issa, 2025</p>
+    </footer>
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>
