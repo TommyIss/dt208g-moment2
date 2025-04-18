@@ -23,6 +23,7 @@
           <br>
           <input type="button" id="add-btn" value="Lägg till uppgift">
           <input type="button" id="check-btn" value="Sätt markerat som klart">
+          <input type="button" id="remove-all-btn" value="Radera alla uppgifter">
         </form>
       </fieldset>
       <div id="toDoDiv">
@@ -30,9 +31,10 @@
         <table id="toDoTable">
           <thead>
             <tr>
-              <th>Uppgift</th>
-              <th>Prioritet</th>
-              <th>Markera klarade uppgifter</th>
+              <th id="task-header" data-order="desc">Uppgift</th>
+              <th id="priority-header" data-order="desc">Prioritet</th>
+              <th id="status-header" data-order="desc">Status</th>
+              <th id="mark-header" data-order="desc">Markera klarade uppgifter</th>
             </tr>
           </thead>
           <tbody></tbody>
