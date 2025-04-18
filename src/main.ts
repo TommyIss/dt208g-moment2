@@ -69,6 +69,10 @@ let addBtn = document.getElementById('add-btn') as HTMLInputElement;
 let checkBtn = document.getElementById('check-btn') as HTMLInputElement;
 let removeAllBtn = document.getElementById('remove-all-btn') as HTMLInputElement;
 let tableBody = document.querySelector('#toDoTable tbody') as HTMLTableCaptionElement;
+let taskHeader = document.getElementById('task-header') as HTMLTableCellElement;
+let priorityHeader = document.getElementById('priority-header') as HTMLTableCellElement;
+let statusHeader = document.getElementById('status-header') as HTMLTableCellElement;
+
 
 // En töm klass
 let newTodo = new TodoList();
@@ -80,6 +84,9 @@ let indexes: number[] = [];
 addBtn.addEventListener('click', getNewTodo);
 removeAllBtn.addEventListener('click', removeAll);
 checkBtn.addEventListener('click', markAsDone);
+taskHeader.addEventListener('click', sortByTask);
+priorityHeader.addEventListener('click', sortByPriority);
+statusHeader.addEventListener('click', sortByStatus);
 window.onload = init;
 
 // Funktion för sidans start/omladdning
@@ -191,4 +198,65 @@ function removeAll() {
 
   // Rensa localstorage
   localStorage.clear();
+}
+
+
+// Sortera via uppdrag
+function sortByTask() {
+  let dataOrder = taskHeader.getAttribute('data-order');
+
+  tableBody.innerHTML = '';
+  if(dataOrder === 'desc') {
+    taskHeader.setAttribute('data-order', 'asc');
+    newTodo.todos.sort((a: Todo, b: Todo) => {
+      return (a.task > b.task) ? 1:-1;
+    });
+  } else if(dataOrder === 'asc') {
+    taskHeader.setAttribute('data-order', 'desc');
+    newTodo.todos.sort((a: Todo, b: Todo) => {
+      return (b.task > a.task) ? 1:-1;
+    }); 
+  }
+
+  addNewTodo(newTodo);
+}
+
+// Sortera via prioritet
+function sortByPriority() {
+  let dataOrder = priorityHeader.getAttribute('data-order');
+
+  tableBody.innerHTML = '';
+  if(dataOrder === 'desc') {
+    priorityHeader.setAttribute('data-order', 'asc');
+    newTodo.todos.sort((a: Todo, b: Todo) => {
+      return (a.priority > b.priority) ? 1:-1;
+    });
+  } else if(dataOrder === 'asc') {
+    priorityHeader.setAttribute('data-order', 'desc');
+    newTodo.todos.sort((a: Todo, b: Todo) => {
+      return (b.priority > a.priority) ? 1:-1;
+    }); 
+  }
+
+  addNewTodo(newTodo);
+}
+
+// Sortera via status
+function sortByStatus() {
+  let dataOrder = statusHeader.getAttribute('data-order');
+
+  tableBody.innerHTML = '';
+  if(dataOrder === 'desc') {
+    statusHeader.setAttribute('data-order', 'asc');
+    newTodo.todos.sort((a: Todo, b: Todo) => {
+      return (a.completed > b.completed ) ? 1:-1;
+    });
+  } else if(dataOrder === 'asc') {
+    statusHeader.setAttribute('data-order', 'desc');
+    newTodo.todos.sort((a: Todo, b: Todo) => {
+      return (b.completed  > a.completed ) ? 1:-1;
+    }); 
+  }
+
+  addNewTodo(newTodo);
 }
