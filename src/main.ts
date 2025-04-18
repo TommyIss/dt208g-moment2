@@ -42,8 +42,8 @@ class TodoList {
 
   // Spara till localstorage
   saveToLocalStorage(): void {
+    localStorage.removeItem('Todos');
     localStorage.setItem('Todos', JSON.stringify(this.todos));
-    console.log(`${this.todos} är sparad till Localstorage`);
   };
 
   // Ladda från localstorage
@@ -58,4 +58,61 @@ class TodoList {
   constructor() {
     this.loadFromLocalStorage();
   }
+}
+
+// Variabler för formulärfält och tabell-element
+let taskEl = document.getElementById('task') as HTMLInputElement;
+let priorityEl = document.getElementById('priority') as HTMLSelectElement;
+let addBtn = document.getElementById('add-btn') as HTMLInputElement;
+let checkBtn = document.getElementById('check-btn') as HTMLInputElement;
+let tableBody = document.querySelector('#toDoTable tbody') as HTMLTableCaptionElement;
+
+// En töm klass
+let newTodo = new TodoList();
+
+// Eventlyssnare
+addBtn.addEventListener('click', getNewTodo);
+window.onload = init;
+
+// Funktion för sidans start/omladdning
+function init() {
+  //localStorage.clear();
+  addNewTodo(newTodo);
+}
+
+// Funktion för att skriva ut inmatning i tabellen
+function addNewTodo(newTodoList: TodoList): void {
+  
+  
+  tableBody.innerHTML = '';
+
+  newTodoList.todos.forEach(newTodo => {
+    let tableRow: HTMLTableRowElement = document.createElement('tr');
+    let taskData: HTMLTableCellElement = document.createElement('td');
+    taskData.textContent = newTodo.task;
+
+    let priorityData: HTMLTableCellElement = document.createElement('td');
+    priorityData.textContent = String(newTodo.priority);
+
+    let checkData: HTMLTableCellElement = document.createElement('td');
+    let checkBox: HTMLInputElement = document.createElement('input');
+    checkBox.type = 'checkbox';
+    checkData.appendChild(checkBox);
+
+    
+    tableRow.appendChild(taskData);
+    tableRow.appendChild(priorityData);
+    tableRow.appendChild(checkBox);
+    tableBody.appendChild(tableRow);
+  });
+
+  taskEl.value = '';
+  priorityEl.value = '';
+}
+
+// Funktion för mata in data och skriva ut dem i tabellen
+function getNewTodo() {
+  newTodo.addTodo(taskEl.value, Number(priorityEl.value));
+
+  addNewTodo(newTodo);
 }
