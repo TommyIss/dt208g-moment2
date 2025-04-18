@@ -29,6 +29,9 @@ main {
 input {
   margin: 1% 0;
 }
+span {
+  margin: 0 1%;
+}
 
 #add-btn, #check-btn, #remove-all-btn {
   background-color: #FF9149;
